@@ -64,7 +64,7 @@ function Login() {
                         <input
                             type="text"
                             placeholder="Email"
-                            className="rounded-sm border-2 focus:border-[#2185f5] p-3 w-full"
+                            className="rounded-sm border-2 focus:border-[#2185f5] outline-none p-3 w-full"
                             onInput={(e) => setEmail(e.target.value)}
                         />
                     </div>
@@ -78,12 +78,12 @@ function Login() {
                         <input
                             type={hidePass ? "password" : "text"}
                             placeholder="password"
-                            className="rounded-sm focus:border-[#2185f5] border-2 p-3 w-full"
+                            className="rounded-sm focus:border-[#2185f5] outline-none border-2 p-3 w-full"
                             onInput={(e) => setPassword(e.target.value)}
                         />
                         <div className="flex content-center w-full space-x-1">
                             <input type="checkbox" onClick={() => setHidePass(!hidePass)} />
-                            <text>Show Password</text>
+                            <text onClick={() => setHidePass(!hidePass)}>Show Password</text>
                         </div>
                     </div>
                     <div className="w-full">
@@ -101,29 +101,29 @@ function Login() {
 
     return (
         // UI 1
-        <div className="h-screen flex justify-center items-center bg-emerald-300 w-full">
-            <div className="lg:w-4/5 w-full columns-2 lg:bg-[#cae9ec] rounded-xl  lg:shadow-xl flex lg:justify-evenly justify-center bg-emerald-300">
-                <div className=''>
-                    <img src='https://img.freepik.com/free-vector/patient-being-examined-by-doctor-clinic-illustration_23-2148863995.jpg?t=st=1716125195~exp=1716128795~hmac=a2db82296db8b9bacd072bbd67370ef52f6d9c9d30c1f2f105601cef5353b903&w=740' alt='img' className='object-contain h-full hidden lg:block' />
-                </div>
-                <div className="my-[5%] lg:w-1/3 w-2/4 p-12 bg-white bg-opacity-80 rounded-xl shadow-xl sm:m-4">
-                    {checklogined()}
-                </div>
-            </div>
-        </div>
-
-        // UI 2
-        // <div className="relative h-screen sm:flex sm:items-center lg:justify-start sm:justify-center ">
-        //     <img
-        //         src="https://www.reshot.com/preview-assets/illustrations/VSYC6FTH42/medicine-healthcare-VSYC6FTH42-w1600.jpg"
-        //         alt="bg-img"
-        //         className="absolute inset-0 -z-10 w-full h-full hidden lg:block"
-        //     />
-        //     <div className="lg:ms-[5%] lg:w-1/3 sm:w-1/2 p-12 bg-white bg-opacity-80 rounded-xl shadow-xl ">
-        //         {/* check if login */}
-        //         {checklogined()}
+        // <div className="h-screen flex justify-center items-center bg-emerald-300 w-full">
+        //     <div className="lg:w-4/5 w-full columns-2 lg:bg-[#cae9ec] rounded-xl  lg:shadow-xl flex lg:justify-evenly justify-center bg-emerald-300">
+        //         <div className=''>
+        //             <img src='https://img.freepik.com/free-vector/patient-being-examined-by-doctor-clinic-illustration_23-2148863995.jpg?t=st=1716125195~exp=1716128795~hmac=a2db82296db8b9bacd072bbd67370ef52f6d9c9d30c1f2f105601cef5353b903&w=740' alt='img' className='object-contain h-full hidden lg:block' />
+        //         </div>
+        //         <div className="my-[5%] lg:w-1/3 w-2/4 p-12 bg-white bg-opacity-80 rounded-xl shadow-xl sm:m-4">
+        //             {checklogined()}
+        //         </div>
         //     </div>
         // </div>
+
+        // UI 2
+        <div className="relative h-screen sm:flex sm:items-center lg:justify-start sm:justify-center ">
+            <img
+                src="https://www.reshot.com/preview-assets/illustrations/VSYC6FTH42/medicine-healthcare-VSYC6FTH42-w1600.jpg"
+                alt="bg-img"
+                className="absolute inset-0 -z-10 w-full h-full hidden lg:block"
+            />
+            <div className="lg:ms-[5%] lg:w-1/3 sm:w-1/2 p-12 bg-white bg-opacity-80 rounded-xl shadow-xl ">
+                {/* check if login */}
+                {checklogined()}
+            </div>
+        </div>
     );
 }
 

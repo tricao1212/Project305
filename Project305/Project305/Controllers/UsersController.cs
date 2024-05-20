@@ -76,14 +76,25 @@ namespace Project305.Controllers
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public async Task<ActionResult<User>> PostUser(User user, DateTime dob)
         {
+            
             _context.User.Add(user);
             await _context.SaveChangesAsync();
-
+            AddPatientDOB(_context.User.FirstOrDefault(x=>x.Email.Equals(user.Email)), dob);
             return CreatedAtAction("GetUser", new { id = user.Id }, user);
         }
-
+        private void AddPatientDOB(User user, DateTime dob)
+        {
+            if (user.Role == "Patient")
+            {
+                PatientDOB patientDOB = new PatientDOB();
+                patientDOB.Dob = dob;
+                patientDOB.UserId = user.Id;
+                _context.PatientDOB.Add(patientDOB);
+            }
+            _context.SaveChanges();
+        }
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)

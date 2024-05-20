@@ -17,5 +17,6 @@ namespace Project305.Data
         public DbSet<Project305.Models.User> User { get; set; } = default!;
         public DbSet<Project305.Models.RegisterForm> RegisterForm { get; set; }
         public DbSet<Project305.Models.PredefinedSensor> PredefinedSensor { get; set; }
+        public DbSet<Project305.Models.PatientDOB> PatientDOB { get; set; }
     }
 }
