@@ -5,5 +5,6 @@ namespace Project305.Data_Access.Repositories
 {
     public interface IAccountRepo : IRepository<Account>
     {
+        Task<Account> Auth(String Email);
     }
 }

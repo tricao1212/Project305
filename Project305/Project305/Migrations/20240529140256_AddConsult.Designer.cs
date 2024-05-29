@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project305.Domain.Data;
 
@@ -11,9 +12,11 @@ using Project305.Domain.Data;
 namespace Project305.Migrations
 {
     [DbContext(typeof(Project305Context))]
-    partial class Project305ContextModelSnapshot : ModelSnapshot
+    [Migration("20240529140256_AddConsult")]
+    partial class AddConsult
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,9 +84,6 @@ namespace Project305.Migrations
 
                     b.Property<string>("Appointment")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("datetime2");
 
                     b.Property<int>("DoctorId")
                         .HasColumnType("int");

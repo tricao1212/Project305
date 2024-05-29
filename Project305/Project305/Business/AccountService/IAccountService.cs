@@ -8,6 +8,7 @@ namespace Project305.Business.AccountService
         Task<Result<Account>> GetById(int Id);
         Task<Result<Account>> CreateAsync(Account account);
         Task<Result<Account>> UpdateAsync(Account account);
-        Task<Result<Account>> DeleteAsync(Account account);
+        Task<Result<Account>> DeleteAsync(int Id);
+        Task<Result<Account>> Auth(String Email, String Password);
     }
 }
