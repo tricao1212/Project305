@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { useState } from "react";
 
 function Login() {
     const [hidePass, setHidePass] = useState(true);
@@ -88,10 +88,10 @@ function Login() {
                     </div>
                     <div className="w-full">
                         <button
-                            className="rounded-xl border-2 p-3 bg-gradient-to-r from-[#2185f5] via-[#40d1b2] to-[#4de67d] hover:shadow-xl w-full"
+                            className="rounded-xl border-2 p-3 bg-gradient-to-r from-[#2185f5] via-[#40d1b2] to-[#4de67d] hover:shadow-xl w-full text-white text-lg font-semibold"
                             onClick={() => setLogined(!logined)}
                         >
-                            <text className="text-white text-lg font-semibold">Login</text>
+                            Login
                         </button>
                     </div>
                 </div>
