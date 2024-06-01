@@ -7,8 +7,29 @@ namespace Project305.Business.AccountService
     {
         public AccountService(IUnitOfWork _unitOfWork) : base(_unitOfWork)
         {
-            
+
         }
+
+        public async Task<Result<Account>> Auth(string Email, string Password)
+        {
+            try
+            {
+                var res = await _unitOfWork.Account.Auth(Email);
+                if (res != null)
+                {
+                    if (res.Password == Password)
+                    {
+                        return Success(res);
+                    }
+                }
+                return Fail<Account>("Email or Password is not correct !");
+            }
+            catch (Exception ex)
+            {
+                return Fail<Account>(ex.Message);
+            }
+        }
+
         public async Task<Result<Account>> CreateAsync(Account account)
         {
             try
@@ -23,9 +44,18 @@ namespace Project305.Business.AccountService
             }
         }
 
-        public Task<Result<Account>> DeleteAsync(Account account)
+        public async Task<Result<Account>> DeleteAsync(int Id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var acc = await _unitOfWork.Account.GetById(Id);
+                await _unitOfWork.Account.DeleteEntity(Id);
+                return Success(acc);
+            }
+            catch (Exception ex)
+            {
+                return Fail<Account>(ex.Message);
+            }
         }
 
         public async Task<Result<IEnumerable<Account>>> GetAll()

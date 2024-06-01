@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Project305.Domain.Data;
 
@@ -11,9 +12,11 @@ using Project305.Domain.Data;
 namespace Project305.Migrations
 {
     [DbContext(typeof(Project305Context))]
-    partial class Project305ContextModelSnapshot : ModelSnapshot
+    [Migration("20240528084810_AddRole")]
+    partial class AddRole
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -71,34 +74,6 @@ namespace Project305.Migrations
                     b.ToTable("Doctor");
                 });
 
-            modelBuilder.Entity("Project305.Domain.Models.InforConsult", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Appointment")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DateTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("DoctorId")
-                        .HasColumnType("int");
-
-                    b.Property<double>("Fee")
-                        .HasColumnType("float");
-
-                    b.Property<int>("PatientId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("InforConsult");
-                });
-
             modelBuilder.Entity("Project305.Domain.Models.Patient", b =>
                 {
                     b.Property<int>("Id")
@@ -136,24 +111,21 @@ namespace Project305.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("BloodPressure")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("BloodPressure")
+                        .HasColumnType("float");
 
-                    b.Property<string>("HeartRate")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("HeartRate")
+                        .HasColumnType("float");
 
-                    b.Property<string>("Temperature")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<double>("Temperature")
+                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
                     b.ToTable("Predefined");
                 });
 
-            modelBuilder.Entity("Project305.Domain.Models.RequestConsult", b =>
+            modelBuilder.Entity("Project305.Domain.Models.RegisterLog", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -161,15 +133,9 @@ namespace Project305.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("DoctorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PatientId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.ToTable("RequestConsult");
+                    b.ToTable("RegisterLog");
                 });
 
             modelBuilder.Entity("Project305.Domain.Models.Patient", b =>

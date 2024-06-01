@@ -17,7 +17,8 @@ namespace Project305.Domain.Data
         public DbSet<Project305.Domain.Models.Patient> Patient { get; set; } = default!;
         public DbSet<Project305.Domain.Models.Doctor> Doctor { get; set; } = default!;
         public DbSet<Project305.Domain.Models.Predefined> Predefined { get; set; } = default!;
-        public DbSet<Project305.Domain.Models.RegisterLog> RegisterLog { get; set; } = default!;
+        public DbSet<Project305.Domain.Models.InforConsult> InforConsult { get; set; } = default!;
+        public DbSet<Project305.Domain.Models.RequestConsult> RequestConsult { get; set; } = default!;
 
     }
 }
