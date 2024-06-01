@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Login() {
     const [hidePass, setHidePass] = useState(true);
@@ -37,10 +38,10 @@ function Login() {
                     </div>
                     <div className="w-full">
                         <button
-                            className="rounded-xl border-2 p-3 bg-gradient-to-r from-[#2185f5] via-[#40d1b2] to-[#4de67d] hover:shadow-xl w-full"
+                            className="rounded-xl border-2 p-3 bg-gradient-to-r from-[#2185f5] via-[#40d1b2] to-[#4de67d] hover:shadow-xl w-full text-white text-lg font-semibold"
                             onClick={() => reset()}
                         >
-                            <text className="text-white text-lg font-semibold">Log out</text>
+                            Log out
                         </button>
                     </div>
                 </div>
@@ -83,15 +84,15 @@ function Login() {
                         />
                         <div className="flex content-center w-full space-x-1">
                             <input type="checkbox" onClick={() => setHidePass(!hidePass)} />
-                            <text>Show Password</text>
+                            <p>Show Password</p>
                         </div>
                     </div>
                     <div className="w-full">
                         <button
                             className="rounded-xl border-2 p-3 bg-gradient-to-r from-[#2185f5] via-[#40d1b2] to-[#4de67d] hover:shadow-xl w-full text-white text-lg font-semibold"
-                            onClick={() => setLogined(!logined)}
+                            // onClick={() => setLogined(!logined)}
                         >
-                            Login
+                            <Link to={"/admin"}>Login</Link>    
                         </button>
                     </div>
                 </div>
