@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import Login from './pages/Login';
+import { PatientHome,DoctorHome, AdminHome } from './pages/Home';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Login />
+    <PatientHome />
   </React.StrictMode>
 );
 
