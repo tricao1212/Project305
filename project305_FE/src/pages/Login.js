@@ -46,7 +46,7 @@ function Login() {
                             <input
                             type="text"
                             placeholder="Email"
-                            className="rounded-sm border-2 focus:border-[#2185f5] p-3 w-full"
+                            className="rounded-sm border-2 focus:border-[#2185f5] outline-none p-3 w-full"
                             onInput={(e) => setEmail(e.target.value)}
                             />
                         </div>
@@ -60,7 +60,7 @@ function Login() {
                             <input
                             type={hidePass ? "password" : "text"}
                             placeholder="password"
-                            className="rounded-sm focus:border-[#2185f5] border-2 p-3 w-full"
+                            className="rounded-sm focus:border-[#2185f5] outline-none border-2 p-3 w-full"
                             onInput={(e) => setPassword(e.target.value)}
                             />
                             <div className="flex content-center w-full space-x-1">
