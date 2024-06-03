@@ -8,7 +8,7 @@ import { PatientHome,DoctorHome, AdminHome } from './pages/Home';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <PatientHome />
+    <App />
   </React.StrictMode>
 );
 
