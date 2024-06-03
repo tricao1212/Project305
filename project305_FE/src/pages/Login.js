@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { setAccount } from "../redux/Store";
+
 
 function Login() {
   const [hidePass, setHidePass] = useState(true);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const handleLogin = async () => {
     const url = `https://localhost:7041/api/Account/Auth?Email=${encodeURIComponent(
       email
@@ -14,8 +19,17 @@ function Login() {
     await axios
       .post(url)
       .then((res) => {
-        console.log(res.data);
-        navigate("/admin");
+        const data = res.data.data;
+        dispatch(setAccount(data));
+        if(data.role === 'ADMIN'){
+          navigate("/admin");
+        }
+        else if(data.role === 'PATIENT'){
+          navigate("/patient");
+        }
+        else{
+          navigate("/doctor");
+        }
       })
       .catch((error) => {
         console.log(error);
