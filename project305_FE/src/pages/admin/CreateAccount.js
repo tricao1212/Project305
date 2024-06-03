@@ -24,7 +24,7 @@ const CreateAccount = () => {
   };
 
   return (
-    <div>
+    <div className="container mt-5 px-5">
       <div className="w-full">
         <label
           htmlFor="email"
@@ -69,7 +69,7 @@ const CreateAccount = () => {
       </div>
       <button
         onClick={() => handleCreate()}
-        className="rounded-xl border-2 p-3 bg-gradient-to-r from-[#2185f5] via-[#40d1b2] to-[#4de67d] hover:shadow-xl w-full text-white text-lg font-semibold"
+        className="mt-3 rounded-xl border-2 p-3 bg-gradient-to-r from-[#2185f5] via-[#40d1b2] to-[#4de67d] hover:shadow-xl w-full text-white text-lg font-semibold"
       >
         Create New
       </button>

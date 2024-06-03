@@ -1,24 +1,26 @@
 import React from 'react'
-import { Link, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import CreateAccount from './CreateAccount'
 import CreatePatient from './CreatePatient'
+import Sidebar, { SidebarItem } from '../../Components/Sidebar'
+import CreateDoctor from './CreateDoctor'
 
 const Admin = () => {
     return (
-        <div className='md:container md:mx-auto px-16 mt-10'>
-            <div className="grid grid-cols-2 gap-2">
-                <Link to={"./newaccount"}>
-                    <button className="rounded-xl border-2 p-3 bg-gradient-to-r from-[#2185f5] via-[#40d1b2] to-[#4de67d] hover:shadow-xl w-full text-white text-lg font-semibold">
-                        Create a new account
-                    </button>
-                </Link>
-                <Link to={"./newpatient"}>
-                    <button className="rounded-xl border-2 p-3 bg-gradient-to-r from-[#2185f5] via-[#40d1b2] to-[#4de67d] hover:shadow-xl w-full text-white text-lg font-semibold">Create new patient</button>
-                </Link>
+        <div className="flex flex-row">
+            <div className="max-w-xs">
+                <Sidebar>
+                    <SidebarItem text="Home" navigation="/admin"/>
+                    <SidebarItem text="Create Account" navigation="/admin/newaccount"/>
+                    <SidebarItem text="Create Patient" navigation="/admin/newpatient"/>
+                    <SidebarItem text="Create Doctor" navigation="/admin/newdoctor" />
+                </Sidebar>
             </div>
             <Routes>
+                <Route path='/' />
                 <Route path='/newaccount' element={<CreateAccount/>}/>
                 <Route path='/newpatient' element={<CreatePatient/>}/>
+                <Route path='/newdoctor' element={<CreateDoctor/>}/>
             </Routes>
         </div>
     )

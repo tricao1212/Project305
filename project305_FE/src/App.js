@@ -5,12 +5,10 @@ import Home from "./pages/patient/Home";
 
 function App() {
   return (
-    
     <Routes>
       <Route path="/" element={<Login/>}/>
       <Route path="/admin/*" element={<Admin/>}/>
       <Route path="/patient/*" element={<Home/>}/>
-      {/* <Route path="/admin/*" element={<Admin/>}/> */}
     </Routes>
   );
 }

@@ -13,11 +13,8 @@ function Login() {
   const dispatch = useDispatch();
 
   const handleLogin = async () => {
-    const url = `https://localhost:7041/api/Account/Auth?Email=${encodeURIComponent(
-      email
-    )}&Password=${encodeURIComponent(password)}`;
-    await axios
-      .post(url)
+    const url = `https://localhost:7041/api/Account/Auth?Email=${encodeURIComponent(email)}&Password=${encodeURIComponent(password)}`;
+    await axios.post(url)
       .then((res) => {
         const data = res.data.data;
         dispatch(setAccount(data));

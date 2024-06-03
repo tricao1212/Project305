@@ -21,8 +21,7 @@ const CreatePatient = () => {
       },
     };
 
-    await axios
-      .post("https://localhost:7041/api/Patient", data)
+    await axios.post("https://localhost:7041/api/Patient", data)
       .then((res) => {
         console.log(res);
       })
@@ -32,7 +31,7 @@ const CreatePatient = () => {
   };
 
   return (
-    <div>
+    <div className="container mt-5 px-5">
       <div className="w-full">
         <label
           htmlFor="name"
@@ -119,7 +118,7 @@ const CreatePatient = () => {
           onInput={(e) => setHeartRate(e.target.value)}
         />
       </div>
-      <button onClick={() => handleCreate()} className="rounded-xl border-2 p-3 bg-gradient-to-r from-[#2185f5] via-[#40d1b2] to-[#4de67d] hover:shadow-xl w-full text-white text-lg font-semibold">
+      <button onClick={() => handleCreate()} className="mt-3 rounded-xl border-2 p-3 bg-gradient-to-r from-[#2185f5] via-[#40d1b2] to-[#4de67d] hover:shadow-xl w-full text-white text-lg font-semibold">
         Create New
       </button>
     </div>

@@ -5,6 +5,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../redux/Store";
 import Loading from "../../Components/Loading";
+import { Route, Routes } from "react-router-dom";
 
 function Home() {
   const acc = useSelector((state) => state.AccountRedux.account);
@@ -27,7 +28,7 @@ function Home() {
     fetchUser();
   },[])
 
-  if(!user){
+  if(!userInfo){
     return <Loading/>
   }
 
@@ -35,13 +36,18 @@ function Home() {
     <div className="flex flex-row">
       <div className="max-w-xs">
         <Sidebar>
-          <SidebarItem text="Home" />
-          <SidebarItem text="Health status" />
-          <SidebarItem text="Consultations" />
-          <SidebarItem text="Payments" />
+          <SidebarItem text="Home" navigation={"/patient"}/>
+          <SidebarItem text="Health status" navigation={"/patient/health"}/>
+          <SidebarItem text="Consultations" navigation={"/patient/consultations"}/>
+          <SidebarItem text="Payments" navigation={"/patient/payment"}/>
         </Sidebar>
       </div>
-      <PatientHome user={userInfo} />
+      <Routes>
+        <Route path="/" element={<PatientHome user={userInfo} />}/>
+        <Route path="/health" />
+        <Route path="/consultations" />
+        <Route path="/payment" />
+      </Routes>
     </div>
   );
 }
