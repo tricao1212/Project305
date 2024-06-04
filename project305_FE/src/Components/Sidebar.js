@@ -1,5 +1,6 @@
+import { useContext, createContext, useState } from "react";
+import { Link, Route, Routes } from "react-router-dom";
 
-import { createContext } from "react"
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { removeAccount } from "../redux/Store";
@@ -13,7 +14,7 @@ export default function Sidebar({ children }) {
     navigate("/")
   }
   return (
-    <aside className="h-screen">
+    <aside className="h-screen w-full">
       <nav className="h-full flex flex-col bg-[#cae9ec] border-r shadow-md">
         <div className="p-4 pb-2 flex justify-center items-center">
           <img
@@ -34,7 +35,7 @@ export default function Sidebar({ children }) {
       </div>
       </nav>
     </aside>
-  )
+  );
 }
 
 export function SidebarItem({ icon, text, alert, navigation }) {
@@ -48,16 +49,19 @@ export function SidebarItem({ icon, text, alert, navigation }) {
     `}
     >
       {icon}
-      <span
-        className={`overflow-hidden transition-all w-52 ml-3`}
-      >
-        {text}
-      </span>
+      {/* <span className={`overflow-hidden transition-all w-52 ml-3`}>{text}</span> */}
+      {/* <Link to={"./newaccount"}> */}
+        <button className="rounded-xl border-2 p-3 bg-gradient-to-r from-[#2185f5] via-[#40d1b2] to-[#4de67d] hover:shadow-xl w-full text-white text-lg font-semibold">
+          {text}
+        </button>
+      {/* </Link> */}
       {alert && (
-        <div
-          className={`absolute right-2 w-2 h-2 rounded bg-indigo-400`}
-        />
+        <div className={`absolute right-2 w-2 h-2 rounded bg-indigo-400`} />
       )}
+      {/* <Routes>
+        <Route path="/newaccount" element={<CreateAccount />} />
+        <Route path="/newpatient" element={<CreatePatient />} />
+      </Routes> */}
     </li>
-  )
+  );
 }
