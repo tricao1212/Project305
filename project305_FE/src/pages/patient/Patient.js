@@ -26,7 +26,7 @@ function Home() {
 
   useEffect(() => {
     fetchUser();
-  },[])
+  })
 
   if(!userInfo){
     return <Loading/>
