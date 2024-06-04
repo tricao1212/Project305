@@ -2,6 +2,10 @@
 using Microsoft.Extensions.DependencyInjection;
 using NuGet.Protocol.Core.Types;
 using Project305.Business.AccountService;
+using Project305.Business.DoctorService;
+using Project305.Business.InforConsultService;
+using Project305.Business.PatientService;
+using Project305.Business.RequestConsultService;
 using Project305.Data_Access.GenericRepo;
 using Project305.Data_Access.UnitOfWorks;
 using Project305.Domain.Data;
@@ -17,6 +21,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IPatientService, PatientService>();
+builder.Services.AddScoped<IDoctorService, DoctorService>();
+builder.Services.AddScoped<IRequestConsultService, RequestConsultService>();
+builder.Services.AddScoped<IInforConsultService, InforConsultService>();
 
 builder.Services.AddCors(options =>
 {

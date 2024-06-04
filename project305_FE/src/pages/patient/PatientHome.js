@@ -1,9 +1,10 @@
-const PatientHome = () => {
+const PatientHome = (user) => {
+    const userInfo = user.user;
     return (
-        <div className='flex flex-grow bg-gray-100'>
+        <div className='flex flex-grow justify-around bg-gray-100'>
             <div className='p-20 space-y-5'>
-                <text className='text-4xl font-bold text-emerald-400'>Welcome Name</text>
-                <div className='block flex flex-row space-x-4'>
+                <text className='text-4xl font-bold text-emerald-400'>Welcome {userInfo.name}</text>
+                <div className=' flex flex-row space-x-4'>
                     <div className='block relative max-w-sm'>
                         <img src='https://images.unsplash.com/photo-1522241112606-b5d35a468795?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' alt='appointment' className='w-full shadow-md' />
                         <button className='absolute bottom-0 w-full h-1/4 bg-black bg-opacity-50 text-white text-center py-2 mb-5'>Go to Consultant</button>
@@ -19,19 +20,17 @@ const PatientHome = () => {
                 </div>
                 <div className='grid grid-cols-2 gap-5'>
                     <div className='shadow-md p-3 rounded flex flex-col'>
-                        <h1 className='font-bold text-xl text-emerald-400'>Last Health Status:</h1>
+                        <h1 className='font-bold text-xl text-emerald-400'>Health Status:</h1>
                         <div className='flex flex-col ps-4'>
                             <div className='flex justify-evenly border-b-2 border-gray-300 py-2'>
                                 <text className='font-bold'>Blood Pressure</text>
                                 <text className='font-bold'>Heart Rate</text>
                                 <text className='font-bold'>Temperature</text>
-                                <text className='font-bold'>Weight</text>
                             </div>
                             <div className='flex justify-around border-b-2 border-gray-300 py-2'>
-                                <text>120/80</text>
-                                <text>80</text>
-                                <text>36.5</text>
-                                <text>70</text>
+                                <text>{userInfo.predefined.bloodPressure}</text>
+                                <text>{userInfo.predefined.heartRate}</text>
+                                <text>{userInfo.predefined.temperature}</text>
                             </div>
                         </div>
                     </div>

@@ -1,9 +1,19 @@
 import { useContext, createContext, useState } from "react";
 import { Link, Route, Routes } from "react-router-dom";
 
-const SidebarContext = createContext();
+import { createContext } from "react"
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { removeAccount } from "../redux/Store";
 
+const SidebarContext = createContext()
 export default function Sidebar({ children }) {
+  const dispatch = useDispatch()
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    dispatch(removeAccount());
+    navigate("/")
+  }
   return (
     <aside className="h-screen">
       <nav className="h-full flex flex-col bg-[#cae9ec] border-r shadow-md">
@@ -20,18 +30,19 @@ export default function Sidebar({ children }) {
         </SidebarContext.Provider>
 
         <div className="flex p-3">
-          <button className="flex-1 bg-red-500 text-white py-2 px-3 rounded-md hover:shadow-md">
-            Logout
-          </button>
-        </div>
+        <button className="flex-1 bg-red-500 text-white py-2 px-3 rounded-md hover:shadow-md" onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
       </nav>
     </aside>
   );
 }
 
-export function SidebarItem({ icon, text, alert, link }) {
+export function SidebarItem({ icon, text, alert, navigation }) {
+  const navigate = useNavigate();
   return (
-    <li
+    <li onClick={()=>navigate(navigation)}
       className={`
         relative flex items-center py-2 px-3 my-3
         font-medium rounded-md cursor-pointer
