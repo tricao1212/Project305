@@ -1,7 +1,6 @@
 import { useContext, createContext, useState } from "react";
 import { Link, Route, Routes } from "react-router-dom";
 
-import { createContext } from "react"
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { removeAccount } from "../redux/Store";
@@ -15,7 +14,7 @@ export default function Sidebar({ children }) {
     navigate("/")
   }
   return (
-    <aside className="h-screen">
+    <aside className="h-screen w-full">
       <nav className="h-full flex flex-col bg-[#cae9ec] border-r shadow-md">
         <div className="p-4 pb-2 flex justify-center items-center">
           <img

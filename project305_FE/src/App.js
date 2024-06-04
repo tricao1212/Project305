@@ -6,7 +6,6 @@ import Doctor from "./pages/doctor/Doctor";
 
 function App() {
   return (
-    
     <Routes>
       <Route path="/" element={<Login/>}/>
       <Route path="/admin/*" element={<Admin/>}/>
