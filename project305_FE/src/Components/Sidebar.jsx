@@ -1,10 +1,9 @@
+import { useContext, createContext, useState } from "react";
+import { Link, Route, Routes } from "react-router-dom";
 
-import { useContext, createContext, useState } from "react"
-
-const SidebarContext = createContext()
+const SidebarContext = createContext();
 
 export default function Sidebar({ children }) {
-  
   return (
     <aside className="h-screen">
       <nav className="h-full flex flex-col bg-[#cae9ec] border-r shadow-md">
@@ -21,16 +20,16 @@ export default function Sidebar({ children }) {
         </SidebarContext.Provider>
 
         <div className="flex p-3">
-        <button className="flex-1 bg-red-500 text-white py-2 px-3 rounded-md hover:shadow-md">
-          Logout
-        </button>
-      </div>
+          <button className="flex-1 bg-red-500 text-white py-2 px-3 rounded-md hover:shadow-md">
+            Logout
+          </button>
+        </div>
       </nav>
     </aside>
-  )
+  );
 }
 
-export function SidebarItem({ icon, text, alert }) {
+export function SidebarItem({ icon, text, alert, link }) {
   return (
     <li
       className={`
@@ -40,16 +39,19 @@ export function SidebarItem({ icon, text, alert }) {
     `}
     >
       {icon}
-      <span
-        className={`overflow-hidden transition-all w-52 ml-3`}
-      >
-        {text}
-      </span>
+      {/* <span className={`overflow-hidden transition-all w-52 ml-3`}>{text}</span> */}
+      {/* <Link to={"./newaccount"}> */}
+        <button className="rounded-xl border-2 p-3 bg-gradient-to-r from-[#2185f5] via-[#40d1b2] to-[#4de67d] hover:shadow-xl w-full text-white text-lg font-semibold">
+          {text}
+        </button>
+      {/* </Link> */}
       {alert && (
-        <div
-          className={`absolute right-2 w-2 h-2 rounded bg-indigo-400`}
-        />
+        <div className={`absolute right-2 w-2 h-2 rounded bg-indigo-400`} />
       )}
+      {/* <Routes>
+        <Route path="/newaccount" element={<CreateAccount />} />
+        <Route path="/newpatient" element={<CreatePatient />} />
+      </Routes> */}
     </li>
-  )
+  );
 }
