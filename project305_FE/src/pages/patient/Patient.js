@@ -46,9 +46,9 @@ function Home() {
         </Sidebar>
       </div>
       <Routes>
-        {/* <Route path="/" element={<PatientHome user={userInfo} />}/> */}
-        <Route path="/consultations" element={<Consultations/>}/>
-        {/* <Route path="/appointments" element={<Appointments user={userInfo}/>}/> */}
+        <Route path="/" element={<PatientHome user={userInfo} />}/>
+        <Route path="/consultations" element={<Consultations user={userInfo}/>}/>
+        <Route path="/appointments" element={<Appointments user={userInfo}/>}/>
       </Routes>
     </div>
   );
