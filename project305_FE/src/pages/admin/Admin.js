@@ -8,7 +8,7 @@ import CreateDoctor from './CreateDoctor'
 const Admin = () => {
     return (
         <div className="flex flex-row">
-            <div className="w-1/5">
+            <div className="w-1/5 shrink-0">
                 <Sidebar>
                     <SidebarItem text="Home" navigation="/admin"/>
                     <SidebarItem text="Create Account" navigation="/admin/newaccount"/>
