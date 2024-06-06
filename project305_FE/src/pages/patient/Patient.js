@@ -12,7 +12,7 @@ import Appointments from "./Appointments";
 function Home() {
   const acc = useSelector((state) => state.AccountRedux.account);
   const dispatch = useDispatch();
-  const [userInfo, setUserInfo] = useState();
+  const [userInfo, setUserInfo] = useState({});
 
   const fetchUser = async () => {
     axios
@@ -20,6 +20,7 @@ function Home() {
       .then((res) => {
         dispatch(setUser(res.data.data));
         setUserInfo(res.data.data);
+        console.log(res.data);
       })
       .catch((error) => {
         console.log(error);
@@ -28,6 +29,7 @@ function Home() {
 
   useEffect(() => {
     fetchUser();
+    console.log(userInfo);
   })
 
   if(!userInfo){
@@ -44,9 +46,9 @@ function Home() {
         </Sidebar>
       </div>
       <Routes>
-        <Route path="/" element={<PatientHome user={userInfo} />}/>
+        {/* <Route path="/" element={<PatientHome user={userInfo} />}/> */}
         <Route path="/consultations" element={<Consultations/>}/>
-        <Route path="/appointments" element={<Appointments user={userInfo}/>}/>
+        {/* <Route path="/appointments" element={<Appointments user={userInfo}/>}/> */}
       </Routes>
     </div>
   );

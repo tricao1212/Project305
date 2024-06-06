@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Bounce, toast } from "react-toastify";
 
 const CreatePatient = () => {
@@ -10,7 +9,6 @@ const CreatePatient = () => {
   const [bloodPressure, setBloodPressure] = useState("");
   const [heartRate, setHeartRate] = useState("");
   const [dob, setDob] = useState(null);
-  const navigate = useNavigate();
   const handleCreate = async () => {
     const data = {
       name: name,
@@ -23,10 +21,11 @@ const CreatePatient = () => {
       },
     };
 
-    await axios.post("https://localhost:7041/api/Patient", data)
+    await axios
+      .post("https://localhost:7041/api/Patient", data)
       .then((res) => {
         console.log(res);
-        toast('Created Successful!', {
+        toast("Created Successful!", {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: false,
@@ -36,8 +35,7 @@ const CreatePatient = () => {
           progress: undefined,
           theme: "light",
           transition: Bounce,
-      });
-      navigate("/admin")
+        });
       })
       .catch((error) => {
         console.log(error);
@@ -132,7 +130,10 @@ const CreatePatient = () => {
           onInput={(e) => setHeartRate(e.target.value)}
         />
       </div>
-      <button onClick={() => handleCreate()} className="mt-3 rounded-xl border-2 p-3 bg-gradient-to-r from-[#2185f5] via-[#40d1b2] to-[#4de67d] hover:shadow-xl w-full text-white text-lg font-semibold">
+      <button
+        onClick={() => handleCreate()}
+        className="mt-3 rounded-xl border-2 p-3 bg-gradient-to-r from-[#2185f5] via-[#40d1b2] to-[#4de67d] hover:shadow-xl w-full text-white text-lg font-semibold"
+      >
         Create New
       </button>
     </div>

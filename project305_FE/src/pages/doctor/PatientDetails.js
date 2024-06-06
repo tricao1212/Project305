@@ -12,8 +12,8 @@ const PatientDetails = () => {
   const acc = useSelector((state) => state.AccountRedux.account);
   const navigate = useNavigate();
 
-  const handleMakeAppointment = (doctorId, patientId) =>{
-    navigate('appointmentForm', { state: { doctorId: doctorId, patientId: patientId } })
+  const handleMakeAppointment = (doctorId, patientId, patientName) =>{
+    navigate('appointmentForm', { state: { doctorId: doctorId, patientId: patientId , patientName: patientName} })
   } 
 
   const fetchRequest = async () => {
@@ -75,7 +75,7 @@ const PatientDetails = () => {
           </p>
           <div className="flex justify-end mt-4">
             <button
-              onClick={() => handleMakeAppointment(data.doctorId, patient.id)}
+              onClick={() => handleMakeAppointment(data.doctorId, patient.id, patient.name)}
               className="px-4 py-2 mx-5 bg-green-500 text-white text-sm font-medium rounded hover:bg-blue-700"
             >
               Make an appointment
@@ -101,7 +101,7 @@ const PatientDetails = () => {
   }
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center m-10">
       <h1 className="font-bold text-3xl text-center mb-4">Patient Details</h1>
       <div>
         {request.map((res) => (

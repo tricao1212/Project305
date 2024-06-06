@@ -1,24 +1,29 @@
 import axios from "axios";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Bounce, toast } from "react-toastify";
 
 const CreateAccount = () => {
+  const role = ["PATIENT", "DOCTOR"];
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userId, setUserId] = useState("");
-  const navigate = useNavigate();
+  const [selectedOption, setSelectedOption] = useState("");
+  const handleChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+
   const handleCreate = async () => {
     const acc = {
       email: email,
       password: password,
-      role: "PATIENT",
+      role: selectedOption,
       userId: userId,
     };
-    await axios.post("https://localhost:7041/api/Account", acc)
+    await axios
+      .post("https://localhost:7041/api/Account", acc)
       .then((res) => {
         console.log(res);
-        toast('Created Successful!', {
+        toast("Created Successful!", {
           position: "top-right",
           autoClose: 3000,
           hideProgressBar: false,
@@ -29,7 +34,6 @@ const CreateAccount = () => {
           theme: "light",
           transition: Bounce,
         });
-        navigate("/admin")
       })
       .catch((error) => {
         console.log(error);
@@ -79,6 +83,21 @@ const CreateAccount = () => {
           className="rounded-sm border-2 focus:border-[#2185f5] p-3 w-full"
           onInput={(e) => setUserId(e.target.value)}
         />
+      </div>
+      <div className="w-full">
+      <label
+          htmlFor="text"
+          className="block text-sm font-medium leading-6 text-gray-900"
+        >
+          Select role:
+        </label>
+        <select className="rounded-sm border-2 focus:border-[#2185f5] p-3 w-full" value={selectedOption} onChange={handleChange}>
+          {role.map((option, index) => (
+            <option key={index} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
       </div>
       <button
         onClick={() => handleCreate()}

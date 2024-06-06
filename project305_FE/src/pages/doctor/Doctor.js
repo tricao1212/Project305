@@ -32,17 +32,19 @@ const Doctor = () => {
       <div className="w-1/5 shrink-0">
         <Sidebar>
           <SidebarItem text="Patient Details" navigation="./patientDetails" />
-          <SidebarItem text="Appointment Details" navigation="./appointment" />
+          <SidebarItem text="Appointment Lists" navigation="./appointment" />
         </Sidebar>
       </div>
-        <div className=" p-10">
-          <Routes>
-            <Route path="/patientDetails" element={<PatientDetails />} />
-            <Route path="/appointment" element={<AppointmentDetails />} />
-            <Route path="/patientDetails/appointmentForm" element={<AppointmentForm />} />
-          </Routes>
-        </div>
-  </div>
+
+      <Routes>
+        <Route path="/patientDetails" element={<PatientDetails />} />
+        <Route path="/appointment" element={<AppointmentDetails />} />
+        <Route
+          path="/patientDetails/appointmentForm"
+          element={<AppointmentForm />}
+        />
+      </Routes>
+    </div>
   );
 };
 
