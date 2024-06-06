@@ -2,7 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-const Consultations = () => {
+const Consultations = (user) => {
+    const userInfo = user.user;
     const [pendingConsults, setPendingConsults] = useState([]);
     const acc = useSelector((state) => state.AccountRedux.account);
     const [doctors, setDoctors] = useState([]);
@@ -73,7 +74,7 @@ const Consultations = () => {
                             <input
                                 id="Name"
                                 disabled
-                                value={"Nguyen van a"}
+                                value={userInfo.name}
                                 className="rounded-sm border-2 focus:border-[#2185f5] p-3"
                             ></input>
                         </div>

@@ -37,7 +37,11 @@ const PatientHome = (user) => {
 
     useEffect(() => {
         fetchAppointment();
-        fetchDoctors();
+        if (Appointment != undefined){
+            fetchDoctors();
+        }else{
+            setLoading(false);
+        }
     }, [fetchAppointment]);
 
     if (loading)
@@ -55,15 +59,15 @@ const PatientHome = (user) => {
                     <text className='text-4xl font-bold text-emerald-400'>Welcome {userInfo.name.split(" ").pop()}</text>
                     <div className=' flex flex-row space-x-4'>
                         <div className='block relative max-w-sm'>
-                            <img src='https://images.unsplash.com/photo-1522241112606-b5d35a468795?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' alt='appointment' className='w-full h-full shadow-md' />
+                            <img src='https://images.unsplash.com/photo-1522241112606-b5d35a468795?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' alt='appointment' className='w-full h-full shadow-md ' />
                             <button className='absolute bottom-0 w-full h-1/4 bg-black bg-opacity-50 text-white text-center py-2 mb-5'>Home</button>
                         </div>
                         <div className='block relative max-w-sm'>
-                            <img src='https://images.unsplash.com/photo-1512867957657-38dbae50a35b?q=80&w=1776&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' alt='appointment' className='w-full h-full shadow-md' />
+                            <img src='https://images.unsplash.com/photo-1512867957657-38dbae50a35b?q=80&w=1776&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' alt='appointment' className='w-full h-full shadow-md ' />
                             <button className='absolute bottom-0 w-full h-1/4 bg-black bg-opacity-50 text-white text-center py-2 mb-5'>Consult a Doctor</button>
                         </div>
                         <div className='block relative max-w-sm'>
-                            <img src='https://plus.unsplash.com/premium_photo-1682104376321-63afb07e8f97?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' alt='appointment' className='w-full h-full shadow-md' />
+                            <img src='https://plus.unsplash.com/premium_photo-1682104376321-63afb07e8f97?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' alt='appointment' className='w-full h-full shadow-md ' />
                             <button className='absolute bottom-0 w-full h-1/4 bg-black bg-opacity-50 text-white text-center py-2 mb-5'>See your Appoinments</button>
                         </div>
                     </div>
@@ -91,11 +95,11 @@ const PatientHome = (user) => {
                                     <text className='font-bold'>Location</text>
                                     <text className='font-bold'>Date</text>
                                 </div>
-                                <div className='grid grid-cols-3 justify-items-center border-b-2 border-gray-300 py-2'>
+                                {Appointment && (<div className='grid grid-cols-3 justify-items-center border-b-2 border-gray-300 py-2'>
                                     <text>{Doctor.name}</text>
                                     <text>{Appointment.appointment}</text>
                                     <text>{DateImprove(Appointment.dateTime)}</text>
-                                </div>
+                                </div>)}
                             </div>
                         </div>
                         <div className='shadow-md p-3 rounded bg-white flex flex-col'>
