@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useSelector } from "react-redux";
 
 const Consultations = (user) => {
@@ -24,7 +24,7 @@ const Consultations = (user) => {
                 console.log(error);
             });
     };
-    const fetchPendingConsults = async () => {
+    const fetchPendingConsults = useCallback(async () => {
         axios
             .get(
                 "https://localhost:7041/api/RequestConsult/IdPatient?Id=" + acc.userId
@@ -44,7 +44,8 @@ const Consultations = (user) => {
             .catch((error) => {
                 console.log(error);
             });
-    };
+    },[]);
+
     useEffect(() => {
         fetchPendingConsults();
     }, [fetchPendingConsults]);
