@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { Bounce, toast } from "react-toastify";
 
 const CreateAccount = () => {
   const [email, setEmail] = useState("");
@@ -13,10 +14,20 @@ const CreateAccount = () => {
       role: "PATIENT",
       userId: userId,
     };
-    await axios
-      .post("https://localhost:7041/api/Account", acc)
+    await axios.post("https://localhost:7041/api/Account", acc)
       .then((res) => {
         console.log(res);
+        toast('Created Successful!', {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
       })
       .catch((error) => {
         console.log(error);
