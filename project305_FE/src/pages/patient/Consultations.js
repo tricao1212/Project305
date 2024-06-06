@@ -91,7 +91,6 @@ const Consultations = (user) => {
                             <select id="Doctor"
                             className="rounded-sm border-2 focus:border-[#2185f5] p-3"
                             >
-                                <option value={0}>Select Doctor</option>
                                 {doctors.map((doctor) => {
                                     return(
                                         <option value={doctor.id}>{findDoctorName(doctor.id).name}</option>
@@ -109,6 +108,7 @@ const Consultations = (user) => {
                             <textarea
                                 id="Message"
                                 className="resize-none rounded-sm border-2 focus:border-[#2185f5] p-3"
+                                value={"Hello, I would like to consult with you about my health."}
                             ></textarea>
                         </div>
                         <button className="border-0 rounded-xl p-3 bg-gradient-to-r from-[#2185f5] via-[#40d1b2] to-[#4de67d] hover:shadow-xl w-full text-white text-lg font-semibold hover:shadow-md"
@@ -152,7 +152,7 @@ const Consultations = (user) => {
                         disabled
                         className="resize-none col-span-2 bg-white"
                         value={
-                            "skdhfalkdjhsflkajhdflaksdhfkahjdfksldjflkhjsadflsahdlfkjhassdlfhalkdhjflakdhflkahdflkhasdflkjhaslkdfhlakhsdfklajhsdfkjhadsklfhalskdhflkashf"
+                            "Hello, I would like to consult with you about my health."
                         }
                     ></textarea>
                 </div>
