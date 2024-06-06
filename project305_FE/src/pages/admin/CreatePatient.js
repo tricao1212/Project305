@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Bounce, toast } from "react-toastify";
 
 const CreatePatient = () => {
@@ -9,7 +10,7 @@ const CreatePatient = () => {
   const [bloodPressure, setBloodPressure] = useState("");
   const [heartRate, setHeartRate] = useState("");
   const [dob, setDob] = useState(null);
-
+  const navigate = useNavigate();
   const handleCreate = async () => {
     const data = {
       name: name,
@@ -36,6 +37,7 @@ const CreatePatient = () => {
           theme: "light",
           transition: Bounce,
       });
+      navigate("/admin")
       })
       .catch((error) => {
         console.log(error);

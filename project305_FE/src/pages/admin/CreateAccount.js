@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Bounce, toast } from "react-toastify";
 
 const CreateAccount = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userId, setUserId] = useState("");
-
+  const navigate = useNavigate();
   const handleCreate = async () => {
     const acc = {
       email: email,
@@ -28,6 +29,7 @@ const CreateAccount = () => {
           theme: "light",
           transition: Bounce,
         });
+        navigate("/admin")
       })
       .catch((error) => {
         console.log(error);
