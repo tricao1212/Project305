@@ -19,6 +19,7 @@ const Consultations = (user) => {
             .post("https://localhost:7041/api/RequestConsult", consult)
             .then((res) => {
                 console.log(res);
+                fetchPendingConsults();
             })
             .catch((error) => {
                 console.log(error);
@@ -44,6 +45,7 @@ const Consultations = (user) => {
             .catch((error) => {
                 console.log(error);
             });
+        console.log(pendingConsults);
     },[]);
 
     useEffect(() => {
