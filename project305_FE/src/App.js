@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Admin from "./pages/admin/Admin";
 import Login from "./pages/Login";
-import Home from "./pages/patient/PatientHome";
+import Home from "./pages/patient/Patient";
 import Protected from "./Components/Protected";
 import Doctor from "./pages/doctor/Doctor";
 import { ToastContainer } from "react-toastify";

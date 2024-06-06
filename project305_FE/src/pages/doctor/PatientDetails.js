@@ -102,7 +102,7 @@ const PatientDetails = () => {
 
   return (
     <div className="flex justify-center m-10">
-      <h1 className="font-bold text-3xl text-center mb-4">Patient Details</h1>
+      <h1 className="font-bold text-3xl text-center mb-4">Patient request</h1>
       <div>
         {request.map((res) => (
           <BlockInfo key={res.id} data={res} />

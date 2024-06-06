@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState, useCallback } from "react";
 import { useSelector } from "react-redux";
+import { Bounce, toast } from "react-toastify";
 
 const Consultations = (user) => {
     const userInfo = user.user;
@@ -19,6 +20,18 @@ const Consultations = (user) => {
             .post("https://localhost:7041/api/RequestConsult", consult)
             .then((res) => {
                 console.log(res);
+                fetchPendingConsults();
+                toast("Created Successful!", {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                  });
             })
             .catch((error) => {
                 console.log(error);
@@ -44,6 +57,7 @@ const Consultations = (user) => {
             .catch((error) => {
                 console.log(error);
             });
+        console.log(pendingConsults);
     },[]);
 
     useEffect(() => {
@@ -89,7 +103,6 @@ const Consultations = (user) => {
                             <select id="Doctor"
                             className="rounded-sm border-2 focus:border-[#2185f5] p-3"
                             >
-                                <option value={0}>Select Doctor</option>
                                 {doctors.map((doctor) => {
                                     return(
                                         <option value={doctor.id}>{findDoctorName(doctor.id).name}</option>
@@ -150,7 +163,7 @@ const Consultations = (user) => {
                         disabled
                         className="resize-none col-span-2 bg-white"
                         value={
-                            "skdhfalkdjhsflkajhdflaksdhfkahjdfksldjflkhjsadflsahdlfkjhassdlfhalkdhjflakdhflkahdflkhasdflkjhaslkdfhlakhsdfklajhsdfkjhadsklfhalskdhflkashf"
+                            "Fake messages"
                         }
                     ></textarea>
                 </div>
