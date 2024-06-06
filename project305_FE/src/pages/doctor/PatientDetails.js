@@ -21,7 +21,7 @@ const PatientDetails = () => {
   };
 
   const BlockInfo = (data) => {
-  const [patient, setPatient] = useState({});
+    const [patient, setPatient] = useState({});
     const fectPatient = async () => {
       axios
         .get("https://localhost:7041/api/Patient/Id?Id=" + data.data.patientId)
@@ -46,9 +46,9 @@ const PatientDetails = () => {
         <div>{patient.name}</div>
         <div>{patient.address}</div>
         <div>{patient.dob}</div>
-        <div>{patient.predefined&&patient.predefined.temperature}</div>
-        <div>{patient.predefined&&patient.predefined.bloodPressure}</div>
-        <div>{patient.predefined&&patient.predefined.heartRate}</div>
+        <div>{patient.predefined && patient.predefined.temperature}</div>
+        <div>{patient.predefined && patient.predefined.bloodPressure}</div>
+        <div>{patient.predefined && patient.predefined.heartRate}</div>
       </div>
     );
   };

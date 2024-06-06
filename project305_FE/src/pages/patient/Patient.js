@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../redux/Store";
 import Loading from "../../Components/Loading";
 import { Route, Routes } from "react-router-dom";
+import Consultations from "./Consultations";
+import Appointments from "./Appointments";
 
 function Home() {
   const acc = useSelector((state) => state.AccountRedux.account);
@@ -34,19 +36,17 @@ function Home() {
 
   return (
     <div className="flex flex-row">
-      <div className="max-w-xs">
+      <div className="w-1/5 shrink-0">
         <Sidebar>
           <SidebarItem text="Home" navigation={"/patient"}/>
-          <SidebarItem text="Health status" navigation={"/patient/health"}/>
           <SidebarItem text="Consultations" navigation={"/patient/consultations"}/>
-          <SidebarItem text="Payments" navigation={"/patient/payment"}/>
+          <SidebarItem text="Appointments" navigation={"/patient/appointments"}/>
         </Sidebar>
       </div>
       <Routes>
         <Route path="/" element={<PatientHome user={userInfo} />}/>
-        <Route path="/health" />
-        <Route path="/consultations" />
-        <Route path="/payment" />
+        <Route path="/consultations" element={<Consultations/>}/>
+        <Route path="/appointments" element={<Appointments user={userInfo}/>}/>
       </Routes>
     </div>
   );

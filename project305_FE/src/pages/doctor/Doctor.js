@@ -29,7 +29,7 @@ const Doctor = () => {
 
   return (
     <div className="flex flex-row">
-      <div className="w-1/5">
+      <div className="w-1/5 shrink-0">
         <Sidebar>
           <SidebarItem text="Patient Details" navigation="./patientDetails" />
           <SidebarItem text="Request from patients" navigation="./patientRequest" />

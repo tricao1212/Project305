@@ -1,5 +1,4 @@
-import { useContext, createContext, useState } from "react";
-import { Link, Route, Routes } from "react-router-dom";
+import {React,createContext} from "react";
 
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -45,13 +44,13 @@ export function SidebarItem({ icon, text, alert, navigation }) {
       className={`
         relative flex items-center py-2 px-3 my-3
         font-medium rounded-md cursor-pointer
-        transition-colors group bg-white hover:shadow-md
+        transition-colors group
     `}
     >
       {icon}
       {/* <span className={`overflow-hidden transition-all w-52 ml-3`}>{text}</span> */}
       {/* <Link to={"./newaccount"}> */}
-        <button className="rounded-xl border-2 p-3 bg-gradient-to-r from-[#2185f5] via-[#40d1b2] to-[#4de67d] hover:shadow-xl w-full text-white text-lg font-semibold">
+        <button className="border-0 rounded-xl p-3 bg-gradient-to-r from-[#2185f5] via-[#40d1b2] to-[#4de67d] hover:shadow-xl w-full text-white text-lg font-semibold hover:shadow-md">
           {text}
         </button>
       {/* </Link> */}
