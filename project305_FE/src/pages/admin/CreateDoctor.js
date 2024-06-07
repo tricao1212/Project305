@@ -7,7 +7,8 @@ const CreateDoctor = () => {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const navigate = useNavigate()
-  const handleCreate = async () => {
+  const handleCreate = async (e) => {
+    e.preventDefault()
     const data = {
       name: name,
       address: address,
@@ -66,7 +67,7 @@ const CreateDoctor = () => {
         />
       </div>
       <button
-        onClick={() => handleCreate()}
+        onClick={handleCreate}
         className="mt-3 rounded-xl border-2 p-3 bg-gradient-to-r from-[#2185f5] via-[#40d1b2] to-[#4de67d] hover:shadow-xl w-full text-white text-lg font-semibold"
       >
         Create New
