@@ -1,17 +1,32 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Bounce, toast } from "react-toastify";
 
 const CreateAccount = () => {
   const role = ["PATIENT", "DOCTOR"];
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userId, setUserId] = useState("");
-  const [selectedOption, setSelectedOption] = useState("");
+  const [users, setUsers] = useState([]);
+  const [userId, setUserId] = useState(0);
+  const [selectedOption, setSelectedOption] = useState("PATIENT");
   const handleChange = (event) => {
     setSelectedOption(event.target.value);
   };
-
+  const navigate = useNavigate()
+  useEffect(()=> {
+    if (selectedOption === "PATIENT") {
+      axios.get("https://localhost:7041/api/Patient/All")
+      .then(response => {
+        setUsers(response.data);
+      })
+    } else {
+      axios.get("https://localhost:7041/api/Doctor/All")
+      .then(response => {
+        setUsers(response.data);
+      })
+    }
+  },[selectedOption])
   const handleCreate = async () => {
     const acc = {
       email: email,
@@ -19,8 +34,7 @@ const CreateAccount = () => {
       role: selectedOption,
       userId: userId,
     };
-    await axios
-      .post("https://localhost:7041/api/Account", acc)
+    await axios.post("https://localhost:7041/api/Account", acc)
       .then((res) => {
         console.log(res);
         toast("Created Successful!", {
@@ -34,6 +48,7 @@ const CreateAccount = () => {
           theme: "light",
           transition: Bounce,
         });
+        navigate('/admin')
       })
       .catch((error) => {
         console.log(error);
@@ -72,22 +87,23 @@ const CreateAccount = () => {
       </div>
       <div className="w-full">
         <label
-          htmlFor="text"
-          className="block text-sm font-medium leading-6 text-gray-900"
+            htmlFor="text"
+            className="block text-sm font-medium leading-6 text-gray-900"
         >
-          User Id:
+          User
         </label>
-        <input
-          type="number"
-          placeholder="User Id"
-          className="rounded-sm border-2 focus:border-[#2185f5] p-3 w-full"
-          onInput={(e) => setUserId(e.target.value)}
-        />
+        <select className="rounded-sm border-2 focus:border-[#2185f5] p-3 w-full" value={userId} onChange={(e)=>setUserId(e.target.value)}>
+          {users.map((item, index) => (
+            <option key={index} value={item.id}>
+              {item.name}
+            </option>
+          ))}
+        </select>
       </div>
       <div className="w-full">
-      <label
-          htmlFor="text"
-          className="block text-sm font-medium leading-6 text-gray-900"
+        <label
+            htmlFor="text"
+            className="block text-sm font-medium leading-6 text-gray-900"
         >
           Select role:
         </label>

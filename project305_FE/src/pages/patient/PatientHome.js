@@ -42,7 +42,7 @@ const PatientHome = (user) => {
 
   useEffect(() => {
     fetchAppointment();
-    if (Appointment != undefined) {
+    if (Appointment !== undefined) {
       fetchDoctors();
     } else {
       setLoading(false);

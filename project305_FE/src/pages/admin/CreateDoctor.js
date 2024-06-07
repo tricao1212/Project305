@@ -1,16 +1,17 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Bounce, toast } from "react-toastify";
 
 const CreateDoctor = () => {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
+  const navigate = useNavigate()
   const handleCreate = async () => {
     const data = {
       name: name,
       address: address,
     };
-
     await axios
       .post("https://localhost:7041/api/Doctor", data)
       .then((res) => {
@@ -26,6 +27,7 @@ const CreateDoctor = () => {
           theme: "light",
           transition: Bounce,
         });
+        navigate('/admin')
       })
       .catch((error) => {
         console.log(error);
