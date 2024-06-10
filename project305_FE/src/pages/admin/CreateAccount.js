@@ -32,7 +32,7 @@ const CreateAccount = () => {
     const hashed = CryptoJS.SHA256(password);
     const acc = {
       email: email,
-      password: hashed,
+      password: password,
       role: selectedOption,
       userId: userId,
     };

@@ -118,7 +118,7 @@ const PatientDetails = () => {
               <strong>Name: </strong> {popupContent.name}
             </p>
             <p>
-              <strong>Date of Birth: </strong> {popupContent.dob}
+              <strong>Date of Birth: </strong> {DateImprove(popupContent.dob)}
             </p>
             <p>
               <strong>Address: </strong> {popupContent.address}
@@ -140,6 +140,11 @@ const PatientDetails = () => {
       />
     </div>
   );
+
+  function DateImprove(date) {
+    const d = new Date(date);
+    return d.toLocaleDateString() + " " + d.toLocaleTimeString();
+  }
 };
 
 export default PatientDetails;

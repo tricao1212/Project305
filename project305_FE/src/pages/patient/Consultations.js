@@ -164,7 +164,7 @@ const Consultations = (user) => {
                         disabled
                         className="resize-none col-span-2 bg-white"
                         value={
-                            "Fake messages"
+                            "Hello, I would like to consult with you about my health."
                         }
                     ></textarea>
                 </div>

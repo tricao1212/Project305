@@ -14,10 +14,11 @@ function Login() {
 
   const handleLogin = async () => {
     const hashed = CryptoJS.SHA256(password);
-    const url = `https://localhost:7041/api/Account/Auth?Email=${encodeURIComponent(email)}&Password=${encodeURIComponent(hashed)}`;
+    const url = `https://localhost:7041/api/Account/Auth?Email=${encodeURIComponent(email)}&Password=${encodeURIComponent(password)}`;
     await axios.post(url)
       .then((res) => {
         const data = res.data.data;
+        console.log(data);
         dispatch(setAccount(data));
         if(data.role === 'ADMIN'){
           navigate("/admin");
@@ -33,6 +34,7 @@ function Login() {
         console.log(error);
       });
   };
+  
   return (
     <div className="h-screen flex justify-center items-center bg-emerald-300 w-full">
       <div className="lg:w-4/5 w-full columns-2 lg:bg-[#cae9ec] rounded-xl  lg:shadow-xl flex lg:justify-evenly justify-center bg-emerald-300">
