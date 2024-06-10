@@ -12,7 +12,7 @@ namespace Project305.Business.InforConsultService
         }
         public async Task<Result<InforConsult>> CreateAsync(InforConsult inforConsult)
         {
-            var requestConsult = await _unitOfWork.RequestConsult.GetRequestByDoctorAndPatient(inforConsult.PatientId,inforConsult.DoctorId);
+            var requestConsult = await _unitOfWork.RequestConsult.GetRequestByDoctorAndPatient(inforConsult.DoctorId,inforConsult.PatientId);
             try
             {
                 var res = await _unitOfWork.InforConsult.CreateEntity(inforConsult);

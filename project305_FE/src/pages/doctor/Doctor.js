@@ -3,11 +3,11 @@ import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import PatientDetails from "./PatientDetails";
 import AppointmentDetails from "./AppointmentDetails";
-import RequestFromPatient from "./RequestFromPatient";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../../redux/Store";
 import Sidebar, { SidebarItem } from "../../Components/Sidebar";
+import AppointmentForm from "./AppointmentForm";
 
 const Doctor = () => {
   const acc = useSelector((state) => state.AccountRedux.account);
@@ -31,19 +31,20 @@ const Doctor = () => {
     <div className="flex flex-row">
       <div className="w-1/5 shrink-0">
         <Sidebar>
-          <SidebarItem text="Patient Details" navigation="./patientDetails" />
-          <SidebarItem text="Request from patients" navigation="./patientRequest" />
-          <SidebarItem text="Appointment Details" navigation="./appointment" />
+          <SidebarItem text="Patient Request" navigation="./patientDetails" />
+          <SidebarItem text="Appointment Lists" navigation="./appointment" />
         </Sidebar>
       </div>
-        <div className=" p-10">
-          <Routes>
-            <Route path="/patientDetails" element={<PatientDetails />} />
-            <Route path="/patientRequest" element={<RequestFromPatient />} />
-            <Route path="/appointment" element={<AppointmentDetails />} />
-          </Routes>
-        </div>
-  </div>
+
+      <Routes>
+        <Route path="/patientDetails" element={<PatientDetails />} />
+        <Route path="/appointment" element={<AppointmentDetails />} />
+        <Route
+          path="/patientDetails/appointmentForm"
+          element={<AppointmentForm />}
+        />
+      </Routes>
+    </div>
   );
 };
 

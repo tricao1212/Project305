@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState, useCallback } from "react";
 import { useSelector } from "react-redux";
+import { Bounce, toast } from "react-toastify";
 
 const Consultations = (user) => {
     const userInfo = user.user;
@@ -20,6 +21,17 @@ const Consultations = (user) => {
             .then((res) => {
                 console.log(res);
                 fetchPendingConsults();
+                toast("Created Successful!", {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                  });
             })
             .catch((error) => {
                 console.log(error);
@@ -152,7 +164,7 @@ const Consultations = (user) => {
                         disabled
                         className="resize-none col-span-2 bg-white"
                         value={
-                            "Hello, I would like to consult with you about my health."
+                            "Fake messages"
                         }
                     ></textarea>
                 </div>

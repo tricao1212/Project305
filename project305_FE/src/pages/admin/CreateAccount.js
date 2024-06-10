@@ -1,22 +1,55 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Bounce, toast } from "react-toastify";
 
 const CreateAccount = () => {
+  const role = ["PATIENT", "DOCTOR"];
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userId, setUserId] = useState("");
-
-  const handleCreate = async () => {
+  const [users, setUsers] = useState([]);
+  const [userId, setUserId] = useState(0);
+  const [selectedOption, setSelectedOption] = useState("PATIENT");
+  const handleChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+  const navigate = useNavigate()
+  useEffect(()=> {
+    if (selectedOption === "PATIENT") {
+      axios.get("https://localhost:7041/api/Patient/All")
+      .then(response => {
+        setUsers(response.data);
+      })
+    } else {
+      axios.get("https://localhost:7041/api/Doctor/All")
+      .then(response => {
+        setUsers(response.data);
+      })
+    }
+  },[selectedOption])
+  const handleCreate = async (e) => {
+    e.preventDefault()
     const acc = {
       email: email,
       password: password,
-      role: "PATIENT",
+      role: selectedOption,
       userId: userId,
     };
-    await axios
-      .post("https://localhost:7041/api/Account", acc)
+    await axios.post("https://localhost:7041/api/Account", acc)
       .then((res) => {
         console.log(res);
+        toast("Created Successful!", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+        });
+        navigate('/admin')
       })
       .catch((error) => {
         console.log(error);
@@ -55,20 +88,36 @@ const CreateAccount = () => {
       </div>
       <div className="w-full">
         <label
-          htmlFor="text"
-          className="block text-sm font-medium leading-6 text-gray-900"
+            htmlFor="text"
+            className="block text-sm font-medium leading-6 text-gray-900"
         >
-          User Id:
+          User
         </label>
-        <input
-          type="number"
-          placeholder="User Id"
-          className="rounded-sm border-2 focus:border-[#2185f5] p-3 w-full"
-          onInput={(e) => setUserId(e.target.value)}
-        />
+        <select className="rounded-sm border-2 focus:border-[#2185f5] p-3 w-full" value={userId} onChange={(e)=>setUserId(e.target.value)}>
+          {users.map((item, index) => (
+            <option key={index} value={item.id}>
+              {item.name}
+            </option>
+          ))}
+        </select>
+      </div>
+      <div className="w-full">
+        <label
+            htmlFor="text"
+            className="block text-sm font-medium leading-6 text-gray-900"
+        >
+          Select role:
+        </label>
+        <select className="rounded-sm border-2 focus:border-[#2185f5] p-3 w-full" value={selectedOption} onChange={handleChange}>
+          {role.map((option, index) => (
+            <option key={index} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
       </div>
       <button
-        onClick={() => handleCreate()}
+        onClick={handleCreate}
         className="mt-3 rounded-xl border-2 p-3 bg-gradient-to-r from-[#2185f5] via-[#40d1b2] to-[#4de67d] hover:shadow-xl w-full text-white text-lg font-semibold"
       >
         Create New
