@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { setAccount } from "../redux/Store";
-
+import CryptoJS from "crypto-js";
 
 function Login() {
   const [hidePass, setHidePass] = useState(true);
@@ -13,7 +13,8 @@ function Login() {
   const dispatch = useDispatch();
 
   const handleLogin = async () => {
-    const url = `https://localhost:7041/api/Account/Auth?Email=${encodeURIComponent(email)}&Password=${encodeURIComponent(password)}`;
+    const hashed = CryptoJS.SHA256(password);
+    const url = `https://localhost:7041/api/Account/Auth?Email=${encodeURIComponent(email)}&Password=${encodeURIComponent(hashed)}`;
     await axios.post(url)
       .then((res) => {
         const data = res.data.data;

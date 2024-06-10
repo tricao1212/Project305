@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Bounce, toast } from "react-toastify";
-
+import CryptoJS from "crypto-js";
 const CreateAccount = () => {
   const role = ["PATIENT", "DOCTOR"];
   const [email, setEmail] = useState("");
@@ -29,9 +29,10 @@ const CreateAccount = () => {
   },[selectedOption])
   const handleCreate = async (e) => {
     e.preventDefault()
+    const hashed = CryptoJS.SHA256(password);
     const acc = {
       email: email,
-      password: password,
+      password: hashed,
       role: selectedOption,
       userId: userId,
     };
