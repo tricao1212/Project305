@@ -67,7 +67,7 @@ const PatientDetails = () => {
           <h1 className="text-gray-900 font-bold text-2xl">{patient.name}</h1>
           <p className="mt-2 text-gray-600 text-sm">
             <span className="font-bold">Date of birth: </span>
-            {patient.dob}
+            {DateImprove(patient.dob)}
           </p>
           <p className="mt-2 text-gray-600 text-sm">
             <span className="font-bold">Address: </span>

@@ -53,7 +53,7 @@ const Appointments = (user) => {
           <text className="text-4xl font-bold text-emerald-400">
             Appointments
           </text>
-          <div className="shadow-md rounded bg-white">
+          <div className="shadow-lg rounded bg-white">
             <div className="grid grid-cols-7 justify-items-center border-b-2 border-gray-300 py-2">
               <text className="font-bold">Doctor</text>
               <text className="font-bold">patient</text>

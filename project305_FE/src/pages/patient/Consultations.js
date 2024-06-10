@@ -73,7 +73,7 @@ const Consultations = (user) => {
                     Consultations
                 </text>
                 <div className="flex flex-row space-x-5">
-                    <div className="flex flex-col h-full basis-1/2 space-y-5 p-5 shadow-md rounded bg-white">
+                    <div className="flex flex-col h-full basis-1/2 space-y-5 p-5 shadow-lg rounded bg-white">
                         <div className="">
                             <text className="font-bold text-xl text-emerald-400 text-center">
                                 Consult Form
@@ -129,7 +129,7 @@ const Consultations = (user) => {
                             Send
                         </button>
                     </div>
-                    <div className="flex flex-col h-full basis-1/2 p-5 shadow-md rounded bg-white">
+                    <div className="flex flex-col h-full basis-1/2 p-5 shadow-lg rounded bg-white">
                         <div className="">
                             <text className="font-bold text-xl text-emerald-400 text-center">
                                 Pending Consult

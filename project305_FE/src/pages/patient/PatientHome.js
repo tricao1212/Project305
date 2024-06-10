@@ -69,7 +69,7 @@ const PatientHome = (user) => {
               <img
                 src="https://images.unsplash.com/photo-1522241112606-b5d35a468795?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="appointment"
-                className="w-full h-full shadow-md "
+                className="w-full h-full shadow-lg "
               />
               <button className="absolute bottom-0 w-full h-1/4 bg-black bg-opacity-50 text-white text-center py-2 mb-5">
                 Home
@@ -79,7 +79,7 @@ const PatientHome = (user) => {
               <img
                 src="https://images.unsplash.com/photo-1512867957657-38dbae50a35b?q=80&w=1776&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="appointment"
-                className="w-full h-full shadow-md "
+                className="w-full h-full shadow-lg "
               />
               <button className="absolute bottom-0 w-full h-1/4 bg-black bg-opacity-50 text-white text-center py-2 mb-5">
                 Consult a Doctor
@@ -89,7 +89,7 @@ const PatientHome = (user) => {
               <img
                 src="https://plus.unsplash.com/premium_photo-1682104376321-63afb07e8f97?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt="appointment"
-                className="w-full h-full shadow-md "
+                className="w-full h-full shadow-lg "
               />
               <button className="absolute bottom-0 w-full h-1/4 bg-black bg-opacity-50 text-white text-center py-2 mb-5">
                 See your Appoinments
@@ -97,7 +97,7 @@ const PatientHome = (user) => {
             </div>
           </div>
           <div className="grid grid-cols-2 gap-5">
-            <div className="shadow-md p-3 rounded bg-white flex flex-col">
+            <div className="shadow-lg p-3 rounded bg-white flex flex-col">
               <h1 className="font-bold text-xl text-emerald-400">
                 Health Status:
               </h1>
@@ -114,7 +114,7 @@ const PatientHome = (user) => {
                 </div>
               </div>
             </div>
-            <div className="shadow-md p-3 rounded bg-white flex flex-col">
+            <div className="shadow-lg p-3 rounded bg-white flex flex-col">
               <h1 className="font-bold text-xl text-emerald-400">
                 Next Appointment:
               </h1>
@@ -133,7 +133,7 @@ const PatientHome = (user) => {
                 )}
               </div>
             </div>
-            <div className="shadow-md p-3 rounded bg-white flex flex-col">
+            <div className="shadow-lg p-3 rounded bg-white flex flex-col">
               <h1 className="font-bold text-xl text-emerald-400">
                 Patient Details:
               </h1>
