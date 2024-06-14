@@ -29,7 +29,7 @@ const AppointmentDetails = () => {
       await axios
         .delete("https://localhost:7041/api/InforConsult/Delete?Id=" + id)
         .then((res) => {
-          toast("Created Successful!", {
+          toast("Deleted Successful!", {
             position: "top-right",
             autoClose: 3000,
             hideProgressBar: false,
